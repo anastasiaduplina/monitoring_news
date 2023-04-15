@@ -7,11 +7,11 @@ services:
 #      - "15672:15672"
 
   postgres:
-    #    container_name: bank_postgres
+    container_name: monitoring_postgres
     image: postgres
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 3120
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
       POSTGRES_DB: monitoring
     ports:
-      - "5432:5432"
+      - "5430:5432"
