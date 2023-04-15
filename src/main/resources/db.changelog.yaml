@@ -1,0 +1,116 @@
+databaseChangeLog:
+  - changeSet:
+      id: '2021092508'
+      author: 'author1'
+      changes:
+        - createTable:
+            tableName: 'users'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_user
+              - column:
+                  name: login
+                  type: varchar(255)
+              - column:
+                  name: password
+                  type: varchar(255)
+
+  - changeSet:
+      id: '2021092507'
+      author: 'author2'
+      changes:
+        - createTable:
+            tableName: 'news'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_news
+#              - column:
+#                  name: id_network
+#                  type: bigint
+              - column:
+                  name: content
+                  type: varchar(255)
+              - column:
+                  name: date
+                  type: timestamp
+  - changeSet:
+      id: '2021092509'
+      author: 'author3'
+      changes:
+        - createTable:
+            tableName: 'networks'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_network
+              - column:
+                  name: network
+                  type: varchar(255)
+  - changeSet:
+      id: '2021092510'
+      author: 'author4'
+      changes:
+        - createTable:
+            tableName: 'key_words'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_key_word
+              - column:
+                  name: key_word
+                  type: varchar(255)
+  - changeSet:
+      id: '2021092511'
+      author: 'author5'
+      changes:
+        - createTable:
+            tableName: 'popular_news'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_popular_news
+              - column:
+                  name: id_key_word
+                  type: bigint
+              - column:
+                  name: id_news
+                  type: bigint
+  - changeSet:
+      id: '2021092512'
+      author: 'author6'
+      changes:
+        - createTable:
+            tableName: 'favourites'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_favourites
+              - column:
+                  name: id_user
+                  type: bigint
+              - column:
+                  name: id_news
+                  type: bigint
+              - column:
+                  name: id_key_word
+                  type: bigint

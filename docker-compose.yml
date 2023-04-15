@@ -1,0 +1,17 @@
+services:
+#  rabbitmq:
+#    image: rabbitmq:management
+#    restart: always
+#    ports:
+#      - "5672:5672"
+#      - "15672:15672"
+
+  postgres:
+    #    container_name: bank_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 3120
+      POSTGRES_DB: monitoring
+    ports:
+      - "5432:5432"
