@@ -13,6 +13,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -89,8 +90,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681548149118</updated>
-      <workItem from="1681548150456" duration="14535000" />
+      <workItem from="1681548150456" duration="17167000" />
     </task>
+    <task id="LOCAL-00001" summary="add model of database, docker dont work correctly">
+      <created>1681565900995</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681565900995</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -106,5 +115,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add model of database, docker dont work correctly" />
+    <option name="LAST_COMMIT_MESSAGE" value="add model of database, docker dont work correctly" />
   </component>
 </project>
