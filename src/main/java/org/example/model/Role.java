@@ -3,17 +3,15 @@ package org.example.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
 
 @Data
 @Entity
-@Table(name="key_words")
-public class KeyWord {
+@Table(name="roles")
+public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "key_word")
-	private String keyWord;
-	@Column(name="count")
-	private Long count;
+	@Column(name="name", unique = true)
+	String name;
 }

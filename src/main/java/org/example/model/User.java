@@ -17,11 +17,14 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotBlank
-	@Column(name = "login")
+	@Column(name = "login",unique = true)
 	private String login;
 	@NotBlank
 	@Column(name = "password")
 	private String password;
+	@ManyToOne
+	@JoinColumn(name = "id_role")
+	private Role role;
 //	@OneToMany(mappedBy = "user")
 //	private List<Favourites> favourites;
 }

@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="daa7fb10-85a7-452e-83da-6315a9511fbb" name="Changes" comment="" />
+    <list default="true" id="daa7fb10-85a7-452e-83da-6315a9511fbb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/KeyWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/KeyWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.changelog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.changelog.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,7 +35,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2OSJe5mrTnmIl9v6tKDiCil5VfC" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -42,7 +51,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "spring.configuration.checksum": "6f3cc370bb651df6381b1dc1a4c01853"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
@@ -55,6 +65,12 @@
     ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.dto" />
+      <recent name="org.example.security" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="monitoring_news" />
@@ -99,7 +115,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1681548149118</updated>
-      <workItem from="1681548150456" duration="27675000" />
+      <workItem from="1681548150456" duration="32122000" />
+      <workItem from="1682263267887" duration="4162000" />
     </task>
     <task id="LOCAL-00001" summary="add model of database, docker dont work correctly">
       <created>1681565900995</created>
@@ -122,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681573936317</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="docker done) and add some controller">
+      <created>1681595724792</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681595724792</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,6 +167,7 @@
     <MESSAGE value="add model of database, docker dont work correctly" />
     <MESSAGE value="add repositories" />
     <MESSAGE value="add swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="add swagger" />
+    <MESSAGE value="docker done) and add some controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="docker done) and add some controller" />
   </component>
 </project>

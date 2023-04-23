@@ -18,6 +18,9 @@ databaseChangeLog:
               - column:
                   name: password
                   type: varchar(255)
+              - column:
+                  name: id_role
+                  type: bigint
 
   - changeSet:
       id: '2021092507'
@@ -58,8 +61,8 @@ databaseChangeLog:
                   name: network
                   type: varchar(255)
   - changeSet:
-      id: '2021092510'
-      author: 'author4'
+      id: '2021092519'
+      author: 'author12'
       changes:
         - createTable:
             tableName: 'key_words'
@@ -73,6 +76,9 @@ databaseChangeLog:
               - column:
                   name: key_word
                   type: varchar(255)
+              - column:
+                  name: count
+                  type: bigint
   - changeSet:
       id: '2021092511'
       author: 'author5'
@@ -114,3 +120,19 @@ databaseChangeLog:
               - column:
                   name: id_key_word
                   type: bigint
+  - changeSet:
+      id: '2021092513'
+      author: 'author7'
+      changes:
+        - createTable:
+            tableName: 'roles'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_role
+              - column:
+                  name: name
+                  type: varchar(255)
