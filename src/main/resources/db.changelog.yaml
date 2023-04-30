@@ -136,3 +136,41 @@ databaseChangeLog:
               - column:
                   name: name
                   type: varchar(255)
+  - changeSet:
+      id: '2021092514'
+      author: 'author99'
+      changes:
+        - createTable:
+            tableName: 'requests'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_request
+              - column:
+                  name: uuid
+                  type: varchar(255)
+              - column:
+                  name: state
+                  type: varchar(255)
+  - changeSet:
+      id: '2021092517'
+      author: 'author98'
+      changes:
+        - createTable:
+            tableName: 'results'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_results
+              - column:
+                  name: idd
+                  type: varchar(255)
+              - column:
+                  name: news
+                  type: jsonb

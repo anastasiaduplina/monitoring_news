@@ -11,4 +11,5 @@ public class AddUser {
 	@NotBlank
 	String password;
 	String role;
+
 }
