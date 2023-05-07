@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daa7fb10-85a7-452e-83da-6315a9511fbb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8a3cc4e8-3937-430c-a0cd-966ed87983a9/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a898f301-1379-4800-970f-764f22a4f026.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a898f301-1379-4800-970f-764f22a4f026.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/KeyWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/KeyWord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db.changelog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.changelog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/NewsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +127,12 @@
       <updated>1681548149118</updated>
       <workItem from="1681548150456" duration="32122000" />
       <workItem from="1682263267887" duration="6200000" />
-      <workItem from="1682782360059" duration="36492000" />
+      <workItem from="1682782360059" duration="37203000" />
+      <workItem from="1682958315898" duration="1463000" />
+      <workItem from="1682973788178" duration="595000" />
+      <workItem from="1683060701093" duration="10000" />
+      <workItem from="1683396787114" duration="1505000" />
+      <workItem from="1683446100783" duration="10192000" />
     </task>
     <task id="LOCAL-00001" summary="add model of database, docker dont work correctly">
       <created>1681565900995</created>
@@ -162,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682268176609</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add vk api and rabbit">
+      <created>1682890500942</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1682890500942</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,6 +199,23 @@
     <MESSAGE value="add swagger" />
     <MESSAGE value="docker done) and add some controller" />
     <MESSAGE value="add spring security" />
-    <option name="LAST_COMMIT_MESSAGE" value="add spring security" />
+    <MESSAGE value="add vk api and rabbit" />
+    <option name="LAST_COMMIT_MESSAGE" value="add vk api and rabbit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/NewsService.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/NewsService.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -69,7 +69,7 @@ public class NewsController {
 
 		return "something wrong";
 	}
-	@PutMapping("/request/getNewsByFilter")
+	@PutMapping("/request/getNewsByFilter")//получение ответа сервера о готовности запроса
 	public String getRNews(@RequestBody String uuid){
 		return newsService.checkNewsResult(uuid);
 

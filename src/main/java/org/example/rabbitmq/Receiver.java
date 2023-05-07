@@ -32,14 +32,32 @@ public class Receiver {
 	public void receive1(String text, MessageHeaders headers, Channel channel,
 	                     @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException, ClientException, ApiException {
 		FindNews findNews=gson.fromJson(text, FindNews.class);
-		try{
-			newsService.saveNews(findNews.getUuid(), findNews);
-			channel.basicAck(tag, false);
-			log.info("Acknowledge");
-		}catch (Exception e){
-			channel.basicReject(tag, true);
-			log.info("Rejecting message");
+		int i = 0;
+		if(headers.containsKey("rejectingCount")){
+			i =  Integer.parseInt(headers.get("rejectingCount").toString());
 		}
+		if(i<5){
+			try{
+				newsService.saveNews(findNews.getUuid(), findNews);
+
+				channel.basicAck(tag, false);
+				log.info("Acknowledge");
+			}catch (Exception e){
+				log.info(e.getMessage());
+				i++;
+				int finalI = i;
+				rabbitTemplate.convertAndSend("news",text, m->{
+					m.getMessageProperties().setHeader("rejectingCount",finalI+"");
+					return m;
+				});
+				channel.basicAck(tag, false);
+				log.info("Rejecting message:"+ finalI);
+			}
+		}else{
+			log.info("too many rejecting");
+			channel.basicAck(tag, false);
+		}
+
 
 	}
 }
