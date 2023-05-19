@@ -1,9 +1,9 @@
 package org.example;
 
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.AddRole;
-import org.example.model.Role;
-import org.example.repository.RoleRepository;
+import org.example.model.KeyWord;
+import org.example.repository.KeyWordRepository;
+import org.example.service.NetworkService;
 import org.example.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,12 +13,21 @@ import org.springframework.stereotype.Service;
 public class SomeFunctionsBeforeStart {
 	@Autowired
 	RoleService roleService;
+	@Autowired
+	NetworkService networkService;
+	@Autowired
+	KeyWordRepository keyWordRepository;
 	public void addRoles(){
 		log.info("addRoles");
-		AddRole role=new AddRole();
-		role.setName("ROLE_USER");
-		roleService.addRole(role);
-		role.setName("ROLE_ADMIN");
-		roleService.addRole(role);
+		roleService.addRole("ROLE_USER");
+		roleService.addRole("ROLE_ADMIN");
+	}
+	public void addNetwork(){
+		log.info("add Networks");
+		networkService.addNetwork("VK");
+		KeyWord keyWord=new KeyWord();
+		keyWord.setKeyWord("school");
+		keyWord.setTrack(true);
+		keyWordRepository.save(keyWord);
 	}
 }

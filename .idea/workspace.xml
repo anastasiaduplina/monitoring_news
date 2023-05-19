@@ -5,14 +5,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="daa7fb10-85a7-452e-83da-6315a9511fbb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/KeyWordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/dto/MakeTrack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/model/NewsFrom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/NewsFromRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/KeyWordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/NetworkService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/NewNewsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/NewsFromService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/RequestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/ResultService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/a898f301-1379-4800-970f-764f22a4f026.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a898f301-1379-4800-970f-764f22a4f026.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fd353c3f-8f99-4ae2-b352-bb607904c5de/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a898f301-1379-4800-970f-764f22a4f026/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a898f301-1379-4800-970f-764f22a4f026/storage_v2/_src_/database/monitoring.SKRkbg/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SomeFunctionsBeforeStart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SomeFunctionsBeforeStart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Vk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Vk.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/NewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/dto/NewsParse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/dto/NewsParse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/feign/OauthClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/feign/OauthClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/KeyWord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/KeyWord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/Network.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/Network.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/model/PopularNews.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/model/NewNews.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/KeyWordRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/KeyWordRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/NetworkRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/NetworkRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/NewsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/NewsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/PopularNewsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/NewNewsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/RequestRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/RequestRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/NewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/NewsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/RoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db.changelog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db.changelog.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +158,13 @@
       <workItem from="1682973788178" duration="595000" />
       <workItem from="1683060701093" duration="10000" />
       <workItem from="1683396787114" duration="1505000" />
-      <workItem from="1683446100783" duration="10192000" />
+      <workItem from="1683446100783" duration="10520000" />
+      <workItem from="1683467400982" duration="1797000" />
+      <workItem from="1683521943094" duration="217000" />
+      <workItem from="1684324312392" duration="15280000" />
+      <workItem from="1684410294399" duration="16314000" />
+      <workItem from="1684483504862" duration="20564000" />
+      <workItem from="1684534507384" duration="2182000" />
     </task>
     <task id="LOCAL-00001" summary="add model of database, docker dont work correctly">
       <created>1681565900995</created>
@@ -176,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682890500942</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="parse vk">
+      <created>1683459146281</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683459146281</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,22 +239,7 @@
     <MESSAGE value="docker done) and add some controller" />
     <MESSAGE value="add spring security" />
     <MESSAGE value="add vk api and rabbit" />
-    <option name="LAST_COMMIT_MESSAGE" value="add vk api and rabbit" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/NewsService.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/service/NewsService.java</url>
-          <line>59</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="parse vk" />
+    <option name="LAST_COMMIT_MESSAGE" value="parse vk" />
   </component>
 </project>

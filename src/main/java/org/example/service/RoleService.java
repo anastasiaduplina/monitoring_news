@@ -12,9 +12,9 @@ import org.springframework.stereotype.Service;
 public class RoleService {
 	@Autowired
 	private RoleRepository roleRepository;
-	public Long addRole(AddRole addRole) {
+	public Long addRole(String name) {
 		Role role=new Role();
-		role.setName(addRole.getName());
+		role.setName(name);
 		roleRepository.save(role);
 		return 0L;
 	}

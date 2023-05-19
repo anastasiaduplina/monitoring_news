@@ -12,6 +12,7 @@ import org.example.dto.AddNetwork;
 import org.example.dto.AddRole;
 import org.example.dto.AddUser;
 import org.example.feign.FeignClient;
+import org.example.feign.OauthClient;
 import org.example.service.RoleService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ import javax.validation.Valid;
 @Slf4j
 public class UserController {
 	private FeignClient feignClient;
+	private OauthClient oauthClient;
 
 	@Value("${orders.service.url:https://api.vk.com}")
 	private String serviceUrl;
@@ -55,16 +57,17 @@ public class UserController {
 	@GetMapping("/start")
 	public RedirectView start(){
 		log.info("hgjh");
-		//oauthClient.getCode();
+//		oauthClient.getCode();
 		try{
 			functionsBeforeStart.addRoles();
+			functionsBeforeStart.addNetwork();
 		}catch (Exception e){
 			log.info(e.getMessage());
 		}
 		RedirectView redirectView = new RedirectView();
+		log.info("redirect");
 		redirectView.setUrl("https://oauth.vk.com/authorize?client_id=51624030&display=page&redirect_uri=http://localhost:8082/oauth&scope=wall,offline&response_type=code");
 		return redirectView;
-
 	}
 	@GetMapping("/oauth")
 	public String getCode(@RequestParam String code) throws ClientException, ApiException {
@@ -74,7 +77,7 @@ public class UserController {
 	}
 	@PostMapping("/addRole")
 	public void addRole(@Valid @RequestBody AddRole addRole, Authentication auth) throws ClientException, ApiException {
-		Long t=roleService.addRole(addRole);
+		Long t=roleService.addRole(addRole.getName());
 
 	}
 
@@ -84,5 +87,6 @@ public class UserController {
 		addUser.setPassword(new BCryptPasswordEncoder().encode(addUser.getPassword()));
 		userService.addUser(addUser);
 	}
+
 
 }

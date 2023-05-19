@@ -7,5 +7,6 @@ import java.util.List;
 public class NewsParse {
 	String text;
 	List<String> images;
-	int time;
+	Long time;
+	boolean isNew;
 }

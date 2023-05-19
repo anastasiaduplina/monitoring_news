@@ -6,16 +6,17 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="popular_news")
-public class PopularNews {
+@Table(name="news_from")
+public class NewsFrom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@ManyToOne
+	@JoinColumn(name = "id_user")
+	private User user;
+	@ManyToOne
 	@JoinColumn(name = "id_key_word")
 	private KeyWord keyWord;
-
-	@ManyToOne
-	@JoinColumn(name = "id_news")
-	private News news;
+	@Column(name = "last_news")
+	private String  lastNews;
 }
