@@ -32,6 +32,7 @@ public class Receiver {
 	public void receive1(String text, MessageHeaders headers, Channel channel,
 	                     @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException, ClientException, ApiException {
 		FindNews findNews=gson.fromJson(text, FindNews.class);
+		log.info("findNews: "+findNews.toString());
 		int i = 0;
 		if(headers.containsKey("rejectingCount")){
 			i =  Integer.parseInt(headers.get("rejectingCount").toString());
@@ -51,7 +52,7 @@ public class Receiver {
 					return m;
 				});
 				channel.basicAck(tag, false);
-				log.info("Rejecting message:"+ finalI);
+				log.info("Rejecting message:"+ finalI+" error:"+e.getMessage());
 			}
 		}else{
 			log.info("too many rejecting");

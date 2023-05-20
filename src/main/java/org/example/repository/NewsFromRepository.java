@@ -8,8 +8,10 @@ import org.example.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface NewsFromRepository extends JpaRepository<NewsFrom,Long> {
-	NewsFrom findByKeyWord(KeyWord keyWord);
+	List<NewsFrom> findByUser(User user);
 	NewsFrom findByKeyWordAndUser(KeyWord keyWord, User user);
 }

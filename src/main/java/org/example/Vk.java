@@ -21,31 +21,32 @@ public class Vk {
 	String CLIENT_SECRET="fAbrwJSwGWs4s5No7tMr";
 	String REDIRECT_URI="http://localhost:8082/oauth";
 	 Integer userId=285421600;
-	 String accessToken=" vk1.a.KhyE8ODo4qtDuxwZpY0gI-LarCkAoK_eewwh_M1ucUGykHHNFDBZF-txaWHQE-ibbfeXBaI9dvSjDNN007lmognNemyVx0l3q-M5EDdCwSA2OItet61g__RVOFbMfyQwyNjWeFzZ0HuQFBmAU7Ff1au8E-Qv8KGJKWo0y90rNtGdAP1a-S-2SUUc6wmh2BsBRcWG3OQAvkYijiSD37rd4A";
-	TransportClient transportClient = new HttpTransportClient();
+	 String accessToken="vk1.a.Ih_ONaHMl6wjTt8lj_6-pnt0zWVp-1qgi07DEqNUExfMKGp3NbOuYMFppbUzdJGhb7vZbFGKO-qlzccn-a00e4FuHIZYaiwHvCXBZEdYpyODoqrNTa24eA2K49gXlWQtB1dPVEJl_6Ud0GkCWJTn9HX92l27ZrOs1dH1WoKSJhLTeehb7mYIgtT-JdAi44z8cbhqJW7_deMQGlJVBw5_Jg";
+	 TransportClient transportClient = new HttpTransportClient();
 	VkApiClient vk = new VkApiClient(transportClient);
 	UserActor actor;
 	public  void auth(String code) throws ClientException, ApiException {
 
-		log.info("okk"+code);
-		UserAuthResponse authResponse = null;
-		try {
-			authResponse = vk.oAuth()
-					.userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
-					.execute();
-		} catch (OAuthException e) {
-			e.getRedirectUri();
-		}catch (Exception e){
-			log.info(e.getMessage());
-		}
-		log.info("userId: "+authResponse.getUserId()+", accessToken: "+authResponse.getAccessToken());
-		actor = new UserActor(userId, authResponse.getAccessToken());
+//		log.info("okk"+code);
+//		UserAuthResponse authResponse = null;
+//		try {
+//			authResponse = vk.oAuth()
+//
+//					.userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
+//					.execute();
+//		} catch (OAuthException e) {
+//			e.getRedirectUri();
+//		}catch (Exception e){
+//			log.info(e.getMessage());
+//		}
+//		log.info("userId: "+authResponse.getUserId()+", accessToken: "+authResponse.getAccessToken());
+		actor = new UserActor(userId, accessToken);
 	}
 	public String getNews(String keyword, int count) throws ClientException, ApiException {
 		//if(actor!=null){
 			log.info(keyword+" "+count);
-			Object object=vk.newsfeed().search(actor).q(keyword).count(count).execute();
-			log.info("vk! "+object.toString());
+			Object object=vk.newsfeed().search(actor).q("le sserafim").count(count).execute();
+			//log.info("vk! "+object.toString());
 			return object.toString();
 		//}
 		//return  null;
@@ -54,12 +55,12 @@ public class Vk {
 		if(last==null){
 			log.info(keyword+" "+last);
 			Object object=vk.newsfeed().search(actor).q(keyword).count(200).execute();
-			log.info("vk! "+object.toString());
+			//log.info("vk! "+object.toString());
 			return object.toString();
 		}else{
 			log.info(keyword+" "+last);
 			Object object=vk.newsfeed().search(actor).q(keyword).startFrom(last).count(200).execute();
-			log.info("vk! "+object.toString());
+			//log.info("vk! "+object.toString());
 			return object.toString();
 		}
 

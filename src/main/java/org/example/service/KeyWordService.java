@@ -1,14 +1,22 @@
 package org.example.service;
 
 import org.example.model.KeyWord;
+import org.example.model.NewsFrom;
+import org.example.model.User;
 import org.example.repository.KeyWordRepository;
+import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class KeyWordService {
 	@Autowired
 	KeyWordRepository keyWordRepository;
+	@Autowired
+	private UserRepository userRepository;
+
 	public void addKeyword(String keyword){
 		KeyWord keyWord=new KeyWord();
 		keyWord.setKeyWord(keyword);
@@ -28,4 +36,5 @@ public class KeyWordService {
 			keyWordRepository.delete(keyWord);
 		}
 	}
+
 }

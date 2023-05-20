@@ -13,9 +13,11 @@ import org.example.repository.RoleRepository;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Objects;
 
 @Service
 @Slf4j
@@ -44,6 +46,19 @@ public class UserService {
 		}
 		userRepository.save(user);
 		return 0L;
+	}
+	public boolean checkUser(String password,String login){
+		boolean b=true;
+		//password=new BCryptPasswordEncoder().encode(password);
+		User user=userRepository.findByLogin(login);
+		log.info(user.toString()+" "+password+" "+login);
+		log.info(String.valueOf(!Objects.equals(user.getPassword(), password)));
+		if(user==null){
+			b=false;
+		}else if(!Objects.equals(user.getPassword(), password)){
+			b=false;
+		}
+		return b;
 	}
 
 

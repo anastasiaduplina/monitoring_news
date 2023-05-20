@@ -51,6 +51,7 @@ public class NewNewsService {
 				}
 				List<NewsParse> list = new ArrayList<>();
 				Object news = vk.getNews(key.getKeyWord(), 10);
+				log.info("AAAAAAAA"+news.toString());
 				list = parseNewsFromVk(news);
 				Long last2=last;
 				for (NewsParse item : list) {
@@ -66,7 +67,7 @@ public class NewNewsService {
 							NewNews newEl = new NewNews();
 							newEl.setKeyWord(key);
 							newEl.setNews(el);
-							log.info("newNews: "+newEl.toString());
+							//log.info("newNews: "+newEl.toString());
 							newNewsRepository.save(newEl);
 
 						} catch (Exception e) {
@@ -83,18 +84,21 @@ public class NewNewsService {
 	}
 
 	public List<NewsParse> getNews(String keyword, String login) {
-
+		log.info("GETNEWS");
 		KeyWord keyWord = keyWordRepository.findByKeyWord(keyword);//get keyword
 		List<NewNews> listOfNews = newNewsRepository.findByKeyWord(keyWord);//get news by keyword
 		User user = userRepository.findByLogin(login);//get user
+		log.info(keyword,user.toString());
 		NewsFrom last = newsFromRepository.findByKeyWordAndUser(keyWord, user);//get last news for user
 		List<NewsParse> listResult = new ArrayList<>();//list with result
 		Long last2=Long.parseLong(last.getLastNews());
+		List<NewsParse> newList=new ArrayList<>();
 		for (NewNews item : listOfNews) {
 			String h = newsRepository.findById(item.getNews().getId()).get().getContent();//get news comtent by id
 			NewsParse newsParse = gson.fromJson(h, NewsParse.class);
 			newsParse.setNew(item.getNews().getTimestamp().compareTo(new Timestamp(Long.parseLong(last.getLastNews()))) > 0);//comparing times
 			if(newsParse.isNew()){
+				newList.add(newsParse);
 				last2=Math.max(last2,newsParse.getTime());
 			}
 			listResult.add(newsParse);
@@ -102,7 +106,7 @@ public class NewNewsService {
 		last.setLastNews(last2.toString());
 		newsFromRepository.save(last);
 
-		return listResult;
+		return newList;
 	}
 	public void makeLookedUp(){
 
@@ -121,11 +125,11 @@ public class NewNewsService {
 		final String jsonString = news.toString();
 		final JsonParser parser = new JsonParser();
 		final JsonObject root = parser.parse(jsonString).getAsJsonObject();
-		log.info("newsserver " + news.toString());
+		//log.info("newsserver " + news.toString());
 		JsonArray array = root.getAsJsonArray("items");
 		List<NewsParse> listOfNews = new ArrayList<>();
 		for (int i = 0; i < array.size(); i++) {
-			log.info("i: " + i);
+			//log.info("i: " + i);
 			NewsParse newsParse = new NewsParse();
 			JsonObject jsonObject = array.get(i).getAsJsonObject();
 			newsParse.setText(jsonObject.get("text").getAsString());

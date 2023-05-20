@@ -34,6 +34,7 @@ public class ResultService {
 			if(Objects.equals(request.getState(), "Done")){
 				Result result=resultRepository.findByIddEquals(uuid);
 				if(result!=null){
+					log.info("whatt");
 					answer=result.getNews();
 					resultRepository.delete(result);
 					requestRepository.delete(request);

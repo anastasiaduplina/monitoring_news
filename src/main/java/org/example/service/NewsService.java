@@ -21,6 +21,7 @@ import org.example.repository.RequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -44,16 +45,17 @@ public class NewsService {
 	@Autowired
 	Vk vk;
 	 public void saveNews(String uuid, FindNews findNews) throws ClientException, ApiException {
+		 log.info("saving news");
 		 Object news=vk.getNews(findNews.getKeyWord(),findNews.getCount());
-		 log.info(news.toString());
+		 //log.info(news.toString());
 		 List<NewsParse> listOfNews=parseNewsFromVk(news);
-		 for(NewsParse item:listOfNews){
-			 News el=new News();
-			 el.setContent(gson.toJson(item));
-			 el.setNetwork(networkRepository.findByNetwork("VK"));
-			 //TODO setTime;
-			 newsRepository.save(el);
-		 }
+//		 for(NewsParse item:listOfNews){
+//			 News el=new News();
+//			 el.setContent(gson.toJson(item));
+//			 el.setNetwork(networkRepository.findByNetwork("VK"));
+//			 el.setTimestamp(new Timestamp(item.getTime()));
+//			 newsRepository.save(el);
+//		 }
 		resultService.saveResult(uuid,listOfNews);
 		 requestService.saveRequest(uuid);
 

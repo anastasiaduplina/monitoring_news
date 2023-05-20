@@ -8,7 +8,6 @@ import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
 import lombok.extern.slf4j.Slf4j;
 import org.example.SomeFunctionsBeforeStart;
-import org.example.Vk;
 import org.example.dto.AddNetwork;
 import org.example.dto.FindNews;
 import org.example.dto.UpdateRequest;
@@ -24,6 +23,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("")
@@ -43,15 +44,9 @@ public class NewsController {
 				.decoder(new JacksonDecoder())
 				.target(FeignClient.class, serviceUrl);
 	}
-	@Autowired
-	private Vk vk;
-	@Autowired
-	private RabbitTemplate rabbitTemplate;
 
 	@Autowired
-	private UserService userService;
-	@Autowired
-	private RoleService roleService;
+	private RabbitTemplate rabbitTemplate;
 	@Autowired
 	private NewsService newsService;
 	@Autowired
@@ -63,19 +58,24 @@ public class NewsController {
 	ObjectMapper mapper = new ObjectMapper();
 	@Autowired
 	SomeFunctionsBeforeStart functionsBeforeStart;
-	@PutMapping("/getNews/filter")
-	public String getNewsByFilter(@RequestBody @Valid FindNews findNews) throws  JsonProcessingException {
-		int k=newsService.setState(findNews.getUuid());
+	@GetMapping("/getNews/filter")
+	public String getNewsByFilter(String keyword,String count,String uuid) throws  JsonProcessingException {
+		log.info("keyword:"+keyword);
+		int k=newsService.setState(uuid);
 		if(k==1){
+			FindNews findNews=new FindNews();
+			findNews.setCount(Integer.valueOf(count));
+			findNews.setKeyWord(keyword);
+			findNews.setUuid(uuid);
 			rabbitTemplate.convertAndSend("news",mapper.writeValueAsString(findNews));
 			return "ok";
 		}
 
 		return "something wrong";
 	}
-	@PutMapping("/request/getNewsByFilter")//получение ответа сервера о готовности запроса
-	public String getRNews(@RequestBody UpdateRequest updateRequest){
-		return resultService.checkNewsResult(updateRequest.uuid);
+	@GetMapping("/request/getNewsByFilter")//получение ответа сервера о готовности запроса
+	public String getRNews(String uuid) throws UnsupportedEncodingException {
+		return URLEncoder.encode(resultService.checkNewsResult(uuid),"UTF-8");
 
 	}
 
@@ -85,14 +85,15 @@ public class NewsController {
 		networkService.addNetwork(addNetwork.getNetwork());
 	}
 	//@Secured({"ROLE_USER"})
-	@PutMapping("/getNewNews")
-	public String getNewNews(@RequestBody String keyword, String login,Authentication auth){
+	@GetMapping("/getNewNews")
+	public String getNewNews( String keyword, String login){
+		log.info("NEWNEWS "+keyword+" "+login);
 		return gson.toJson(newNewsService.getNews(keyword, login));
 
 	}
-	@Secured({"ROLE_USER"})
-	@PutMapping("/lookedUpNews")
-	public void lookedUpNews(@RequestBody String lastTime,Authentication auth){
-
-	}
+//	@Secured({"ROLE_USER"})
+//	@PutMapping("/lookedUpNews")
+//	public void lookedUpNews(@RequestBody String lastTime,Authentication auth){
+//
+//	}
 }

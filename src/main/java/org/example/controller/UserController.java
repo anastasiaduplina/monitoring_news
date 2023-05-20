@@ -26,6 +26,9 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.annotation.PostConstruct;
 import javax.validation.Valid;
+import java.beans.Encoder;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 @RestController
 @RequestMapping("")
@@ -69,23 +72,45 @@ public class UserController {
 		redirectView.setUrl("https://oauth.vk.com/authorize?client_id=51624030&display=page&redirect_uri=http://localhost:8082/oauth&scope=wall,offline&response_type=code");
 		return redirectView;
 	}
-	@GetMapping("/oauth")
+	@GetMapping("/oauth")//for start
 	public String getCode(@RequestParam String code) throws ClientException, ApiException {
-		log.info(code);
-		vk.auth(code);
+		try{
+			functionsBeforeStart.addRoles();
+			//functionsBeforeStart.addNetwork();
+		}catch (Exception e){
+			log.info(e.getMessage());
+		}
+		log.info("code");
+		vk.auth("code");
 		return "oauth ok!";
 	}
 	@PostMapping("/addRole")
-	public void addRole(@Valid @RequestBody AddRole addRole, Authentication auth) throws ClientException, ApiException {
+	public void addRole(@Valid @RequestBody AddRole addRole, Authentication auth){
 		Long t=roleService.addRole(addRole.getName());
 
 	}
 
 
-	@PostMapping("/addUser")
-	public void addUser(@RequestBody @Valid AddUser addUser, Authentication auth){
-		addUser.setPassword(new BCryptPasswordEncoder().encode(addUser.getPassword()));
+	@GetMapping("/addUser")
+	public String addUser( String login, String password) throws UnsupportedEncodingException {
+		//password=new BCryptPasswordEncoder().encode(password);
+		AddUser addUser=new AddUser();
+		addUser.setPassword(password);
+		addUser.setLogin(login);
 		userService.addUser(addUser);
+		return URLEncoder.encode("Привет!", "UTF-8");
+	}
+	@GetMapping("/authorization")
+	public String auth(String password,String login){
+		if(userService.checkUser(password,login)){
+			return "ok";
+		}else {
+			return "something wrong";
+		}
+	}
+	@GetMapping("/letters")
+	public String lettrs() throws UnsupportedEncodingException {
+		return URLEncoder.encode("Привет!", "UTF-8");
 	}
 
 
