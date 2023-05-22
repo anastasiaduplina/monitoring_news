@@ -45,21 +45,21 @@ public class Vk {
 	public String getNews(String keyword, int count) throws ClientException, ApiException {
 		//if(actor!=null){
 			log.info(keyword+" "+count);
-			Object object=vk.newsfeed().search(actor).q("le sserafim").count(count).execute();
+			Object object=vk.newsfeed().search(actor).q(keyword).count(count).execute();
 			//log.info("vk! "+object.toString());
 			return object.toString();
 		//}
 		//return  null;
 	}
-	public String getNewNews(String keyword, String last) throws ClientException, ApiException {
+	public String getNewNews(String keyword, Integer last) throws ClientException, ApiException {
 		if(last==null){
 			log.info(keyword+" "+last);
-			Object object=vk.newsfeed().search(actor).q(keyword).count(200).execute();
+			Object object=vk.newsfeed().search(actor).q(keyword).count(10).execute();
 			//log.info("vk! "+object.toString());
 			return object.toString();
 		}else{
 			log.info(keyword+" "+last);
-			Object object=vk.newsfeed().search(actor).q(keyword).startFrom(last).count(200).execute();
+			Object object=vk.newsfeed().search(actor).q(keyword).startTime(last).count(10).execute();
 			//log.info("vk! "+object.toString());
 			return object.toString();
 		}

@@ -29,7 +29,7 @@ public class UserService {
 	private RoleRepository roleRepository;
 
 
-	public Long addUser(AddUser addUser){
+	public User addUser(AddUser addUser){
 		User user=new User();
 		user.setLogin(addUser.getLogin());
 		user.setPassword(addUser.getPassword());
@@ -45,7 +45,7 @@ public class UserService {
 
 		}
 		userRepository.save(user);
-		return 0L;
+		return user;
 	}
 	public boolean checkUser(String password,String login){
 		boolean b=true;
@@ -59,6 +59,12 @@ public class UserService {
 			b=false;
 		}
 		return b;
+	}
+	public User changePassword(String login,String password){
+		User user=userRepository.findByLogin(login);
+		user.setPassword(password);
+		userRepository.save(user);
+		return  user;
 	}
 
 

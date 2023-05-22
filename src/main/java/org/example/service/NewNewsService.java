@@ -39,21 +39,24 @@ public class NewNewsService {
 	Gson gson = new Gson();
 
 	@Scheduled(fixedDelay = 15 * 1000)
-	public void saveNews() throws ClientException, ApiException {
+	public void saveNews() throws ClientException, ApiException, InterruptedException {
 		log.info("saveNewNews");
 		List<KeyWord> keyWords = keyWordRepository.findAll();//list of keywords
 		for (KeyWord key : keyWords) {//go on keywords
 			if (key.isTrack()) {//if keywords is track
 				log.info("key:" + key.getKeyWord());
-				Long last = 0L;
+				Integer last = null;
 				if (key.getLastNews() != null) {
-					last = Long.valueOf(key.getLastNews());//get last news
+					last = Integer.valueOf(key.getLastNews());//get last news
 				}
 				List<NewsParse> list = new ArrayList<>();
-				Object news = vk.getNews(key.getKeyWord(), 10);
+				Object news = vk.getNewNews(key.getKeyWord(), last);
 				log.info("AAAAAAAA"+news.toString());
 				list = parseNewsFromVk(news);
-				Long last2=last;
+				if(last==null){
+					last=0;
+				}
+				Long last2= Long.valueOf(last);
 				for (NewsParse item : list) {
 					log.info("Time: "+item.getTime()+", "+last);
 					if(item.getTime()>last){
@@ -79,7 +82,9 @@ public class NewNewsService {
 				}
 				key.setLastNews(last2.toString());
 				keyWordRepository.save(key);
+				Thread.sleep(1000);
 			}
+
 		}
 	}
 

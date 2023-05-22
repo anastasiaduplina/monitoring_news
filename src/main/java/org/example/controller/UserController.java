@@ -13,6 +13,7 @@ import org.example.dto.AddRole;
 import org.example.dto.AddUser;
 import org.example.feign.FeignClient;
 import org.example.feign.OauthClient;
+import org.example.model.User;
 import org.example.service.RoleService;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,8 +98,8 @@ public class UserController {
 		AddUser addUser=new AddUser();
 		addUser.setPassword(password);
 		addUser.setLogin(login);
-		userService.addUser(addUser);
-		return URLEncoder.encode("Привет!", "UTF-8");
+		User user=userService.addUser(addUser);
+		return "ok\n login: "+user.getLogin()+"\npassword: "+user.getPassword();
 	}
 	@GetMapping("/authorization")
 	public String auth(String password,String login){
@@ -111,6 +112,15 @@ public class UserController {
 	@GetMapping("/letters")
 	public String lettrs() throws UnsupportedEncodingException {
 		return URLEncoder.encode("Привет!", "UTF-8");
+	}
+	@GetMapping("/change/password")
+	public String changePassword(String login,String passwordOld,String passwordNew){
+		if(userService.checkUser(passwordOld,login)){
+			User user=userService.changePassword(login,passwordNew);
+			return "ok\n login: "+user.getLogin()+"\npassword: "+user.getPassword();
+		}else {
+			return "something wrong";
+		}
 	}
 
 

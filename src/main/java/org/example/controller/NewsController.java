@@ -86,9 +86,9 @@ public class NewsController {
 	}
 	//@Secured({"ROLE_USER"})
 	@GetMapping("/getNewNews")
-	public String getNewNews( String keyword, String login){
+	public String getNewNews( String keyword, String login) throws UnsupportedEncodingException {
 		log.info("NEWNEWS "+keyword+" "+login);
-		return gson.toJson(newNewsService.getNews(keyword, login));
+		return URLEncoder.encode(gson.toJson(newNewsService.getNews(keyword, login)),"UTF-8");
 
 	}
 //	@Secured({"ROLE_USER"})

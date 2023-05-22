@@ -38,9 +38,13 @@ public class SomeFunctionsBeforeStart {
 		log.info("add Networks");
 		networkService.addNetwork("VK");
 		KeyWord keyWord=new KeyWord();
-		keyWord.setKeyWord("le sserafim");
+		keyWord.setKeyWord("monitoring");
 		keyWord.setTrack(true);
 		keyWordRepository.save(keyWord);
+		KeyWord keyWord2=new KeyWord();
+		keyWord2.setKeyWord("mipt.ru");
+		keyWord2.setTrack(true);
+		keyWordRepository.save(keyWord2);
 	}
 	@EventListener(ApplicationReadyEvent.class)
 	public void vkAuth() throws ClientException, ApiException {
