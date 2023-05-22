@@ -13,8 +13,6 @@ public class FindNews {
 	@Max(100)
 	Integer count;
 	String network;
-//	Timestamp dateFrom;
-//	Timestamp dateTo;
 	@NotBlank
 	String uuid;
 }

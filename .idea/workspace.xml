@@ -77,7 +77,7 @@
       <recent name="org.example.security" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Main">
+  <component name="RunManager">
     <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="monitoring_news" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="org.example.Main" />
@@ -139,7 +139,7 @@
       <workItem from="1684534507384" duration="7230000" />
       <workItem from="1684573711804" duration="18263000" />
       <workItem from="1684680870728" duration="6196000" />
-      <workItem from="1684756379980" duration="15851000" />
+      <workItem from="1684756379980" duration="23990000" />
     </task>
     <task id="LOCAL-00001" summary="add model of database, docker dont work correctly">
       <created>1681565900995</created>
@@ -204,7 +204,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684603723581</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="the collest version">
+      <created>1684784174034</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684784174034</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +237,7 @@
     <MESSAGE value="add vk api and rabbit" />
     <MESSAGE value="parse vk" />
     <MESSAGE value="cool version" />
-    <option name="LAST_COMMIT_MESSAGE" value="cool version" />
+    <MESSAGE value="the collest version" />
+    <option name="LAST_COMMIT_MESSAGE" value="the collest version" />
   </component>
 </project>

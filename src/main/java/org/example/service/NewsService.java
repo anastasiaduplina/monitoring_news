@@ -30,18 +30,11 @@ import java.util.Objects;
 @Slf4j
 public class NewsService {
 	@Autowired
-	private NetworkRepository networkRepository;
-	@Autowired
 	private ResultService resultService;
 	@Autowired
 	private RequestService requestService;
 	@Autowired
 	private RequestRepository requestRepository;
-	@Autowired
-	private NewsRepository newsRepository;
-	@Autowired
-	private NetworkService networkService;
-	Gson gson=new Gson();
 	@Autowired
 	Vk vk;
 	 public void saveNews(String uuid, FindNews findNews) throws ClientException, ApiException {
@@ -49,14 +42,7 @@ public class NewsService {
 		 Object news=vk.getNews(findNews.getKeyWord(),findNews.getCount());
 		 //log.info(news.toString());
 		 List<NewsParse> listOfNews=parseNewsFromVk(news);
-//		 for(NewsParse item:listOfNews){
-//			 News el=new News();
-//			 el.setContent(gson.toJson(item));
-//			 el.setNetwork(networkRepository.findByNetwork("VK"));
-//			 el.setTimestamp(new Timestamp(item.getTime()));
-//			 newsRepository.save(el);
-//		 }
-		resultService.saveResult(uuid,listOfNews);
+		 resultService.saveResult(uuid,listOfNews);
 		 requestService.saveRequest(uuid);
 
 	 }

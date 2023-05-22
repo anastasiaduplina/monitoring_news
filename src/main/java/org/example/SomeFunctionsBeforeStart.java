@@ -48,6 +48,6 @@ public class SomeFunctionsBeforeStart {
 	}
 	@EventListener(ApplicationReadyEvent.class)
 	public void vkAuth() throws ClientException, ApiException {
-		vk.auth("code");
+		vk.auth2();
 	}
 }

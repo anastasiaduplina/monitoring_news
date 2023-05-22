@@ -14,7 +14,6 @@ import org.example.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -95,6 +94,9 @@ public class NewNewsService {
 		User user = userRepository.findByLogin(login);//get user
 		log.info(keyword,user.toString());
 		NewsFrom last = newsFromRepository.findByKeyWordAndUser(keyWord, user);//get last news for user
+		if(last==null){
+			return  null;
+		}
 		List<NewsParse> listResult = new ArrayList<>();//list with result
 		Long last2=Long.parseLong(last.getLastNews());
 		List<NewsParse> newList=new ArrayList<>();
@@ -112,18 +114,6 @@ public class NewNewsService {
 		newsFromRepository.save(last);
 
 		return newList;
-	}
-	public void makeLookedUp(){
-
-	}
-
-	String parseLastNews(Object news) {
-		final String jsonString = news.toString();
-		final JsonParser parser = new JsonParser();
-		final JsonObject root = parser.parse(jsonString).getAsJsonObject();
-		log.info("newsserver " + news.toString());
-		String last = root.get("next_from").getAsString();
-		return last;
 	}
 
 	List<NewsParse> parseNewsFromVk(Object news) {

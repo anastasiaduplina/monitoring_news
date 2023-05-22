@@ -3,47 +3,30 @@ package org.example.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import feign.Feign;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
 import lombok.extern.slf4j.Slf4j;
 import org.example.SomeFunctionsBeforeStart;
 import org.example.dto.AddNetwork;
 import org.example.dto.FindNews;
-import org.example.dto.UpdateRequest;
-import org.example.feign.FeignClient;
+import org.example.dto.NewsParse;
 import org.example.service.*;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.security.core.Authentication;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 @RestController
 @RequestMapping("")
 @Validated
 @Slf4j
 public class NewsController {
-	private FeignClient feignClient;
 
-	@Value("${orders.service.url:https://api.vk.com}")
-	private String serviceUrl;
 	@Autowired
 	private NetworkService networkService;
-	@PostConstruct
-	private void configure() {
-		feignClient = Feign.builder()
-				.encoder(new JacksonEncoder())
-				.decoder(new JacksonDecoder())
-				.target(FeignClient.class, serviceUrl);
-	}
 
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
@@ -54,7 +37,6 @@ public class NewsController {
 	@Autowired
 	private NewNewsService newNewsService;
 	Gson gson=new Gson();
-
 	ObjectMapper mapper = new ObjectMapper();
 	@Autowired
 	SomeFunctionsBeforeStart functionsBeforeStart;
@@ -81,19 +63,17 @@ public class NewsController {
 
 	@Secured({"ROLE_ADMIN"})
 	@PostMapping("/addNetwork")
-	public void addNetwork(@RequestBody @Valid AddNetwork addNetwork, Authentication auth){
+	public void addNetwork(@RequestBody @Valid AddNetwork addNetwork){
 		networkService.addNetwork(addNetwork.getNetwork());
 	}
-	//@Secured({"ROLE_USER"})
 	@GetMapping("/getNewNews")
 	public String getNewNews( String keyword, String login) throws UnsupportedEncodingException {
 		log.info("NEWNEWS "+keyword+" "+login);
-		return URLEncoder.encode(gson.toJson(newNewsService.getNews(keyword, login)),"UTF-8");
+		List<NewsParse> list=newNewsService.getNews(keyword, login);
+		if(list==null){
+			return "null";
+		}
+		return URLEncoder.encode(gson.toJson(list),"UTF-8");
 
 	}
-//	@Secured({"ROLE_USER"})
-//	@PutMapping("/lookedUpNews")
-//	public void lookedUpNews(@RequestBody String lastTime,Authentication auth){
-//
-//	}
 }

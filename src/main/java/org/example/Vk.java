@@ -27,41 +27,51 @@ public class Vk {
 	UserActor actor;
 	public  void auth(String code) throws ClientException, ApiException {
 
-//		log.info("okk"+code);
-//		UserAuthResponse authResponse = null;
-//		try {
-//			authResponse = vk.oAuth()
-//
-//					.userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
-//					.execute();
-//		} catch (OAuthException e) {
-//			e.getRedirectUri();
-//		}catch (Exception e){
-//			log.info(e.getMessage());
-//		}
-//		log.info("userId: "+authResponse.getUserId()+", accessToken: "+authResponse.getAccessToken());
+		log.info("okk"+code);
+		UserAuthResponse authResponse = null;
+		try {
+			authResponse = vk.oAuth()
+
+					.userAuthorizationCodeFlow(APP_ID, CLIENT_SECRET, REDIRECT_URI, code)
+					.execute();
+		} catch (OAuthException e) {
+			e.getRedirectUri();
+		}catch (Exception e){
+			log.info(e.getMessage());
+		}
+		//log.info("userId: "+authResponse.getUserId()+", accessToken: "+authResponse.getAccessToken());
+		actor = new UserActor(authResponse.getUserId(), authResponse.getAccessToken());
+	}
+	public void auth2(){
 		actor = new UserActor(userId, accessToken);
 	}
 	public String getNews(String keyword, int count) throws ClientException, ApiException {
-		//if(actor!=null){
+		if(actor!=null){
 			log.info(keyword+" "+count);
 			Object object=vk.newsfeed().search(actor).q(keyword).count(count).execute();
-			//log.info("vk! "+object.toString());
 			return object.toString();
-		//}
-		//return  null;
+		}
+		return  "[]";
 	}
 	public String getNewNews(String keyword, Integer last) throws ClientException, ApiException {
 		if(last==null){
-			log.info(keyword+" "+last);
-			Object object=vk.newsfeed().search(actor).q(keyword).count(10).execute();
-			//log.info("vk! "+object.toString());
-			return object.toString();
+			if(actor!=null){
+				log.info(keyword+" "+last);
+				Object object=vk.newsfeed().search(actor).q(keyword).count(10).execute();
+				return object.toString();
+			}else{
+				return "[]";
+			}
+
 		}else{
-			log.info(keyword+" "+last);
-			Object object=vk.newsfeed().search(actor).q(keyword).startTime(last).count(10).execute();
-			//log.info("vk! "+object.toString());
-			return object.toString();
+			if(actor!=null){
+				log.info(keyword+" "+last);
+				Object object=vk.newsfeed().search(actor).q(keyword).startTime(last).count(10).execute();
+				return object.toString();
+			}else{
+				return "[]";
+			}
+
 		}
 
 

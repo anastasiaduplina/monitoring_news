@@ -1,10 +1,8 @@
 package org.example.model;
 
-import liquibase.pro.packaged.O;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity

@@ -28,8 +28,5 @@ public class News {
 	@Column(name = "date")
 	@JsonFormat(shape= JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone="Europe/Berlin")
 	private Timestamp timestamp;
-//	@ManyToOne
-//	@JoinColumn(name = "id_key_word")
-//	private KeyWord keyWord;
 
 }

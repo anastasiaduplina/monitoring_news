@@ -1,10 +1,7 @@
 package org.example.rabbitmq;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.rabbitmq.client.Channel;
-import com.vk.api.sdk.exceptions.ApiException;
-import com.vk.api.sdk.exceptions.ClientException;
 import lombok.extern.slf4j.Slf4j;
 import org.example.dto.FindNews;
 import org.example.service.NewsService;
@@ -30,7 +27,7 @@ public class Receiver {
 
 	@RabbitListener(queues = "news", ackMode = "MANUAL")
 	public void receive1(String text, MessageHeaders headers, Channel channel,
-	                     @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException, ClientException, ApiException {
+	                     @Header(AmqpHeaders.DELIVERY_TAG) long tag) throws IOException {
 		FindNews findNews=gson.fromJson(text, FindNews.class);
 		log.info("findNews: "+findNews.toString());
 		int i = 0;

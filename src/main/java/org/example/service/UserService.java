@@ -1,22 +1,13 @@
 package org.example.service;
 
-import feign.Feign;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.AddRole;
 import org.example.dto.AddUser;
-import org.example.feign.FeignClient;
-import org.example.model.Role;
 import org.example.model.User;
 import org.example.repository.RoleRepository;
 import org.example.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Objects;
 
 @Service
@@ -49,7 +40,6 @@ public class UserService {
 	}
 	public boolean checkUser(String password,String login){
 		boolean b=true;
-		//password=new BCryptPasswordEncoder().encode(password);
 		User user=userRepository.findByLogin(login);
 		log.info(user.toString()+" "+password+" "+login);
 		log.info(String.valueOf(!Objects.equals(user.getPassword(), password)));
