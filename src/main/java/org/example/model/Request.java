@@ -6,12 +6,13 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="networks")
-public class Network {
+@Table(name="requests")
+public class Request {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(name = "network",unique = true)
-	private String network;
-
+	@Column(name="uuid", unique = true)
+	String uuid;
+	@Column(name="state")
+	String state;
 }

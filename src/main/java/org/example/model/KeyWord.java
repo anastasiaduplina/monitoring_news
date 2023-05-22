@@ -15,5 +15,7 @@ public class KeyWord {
 	@Column(name = "key_word")
 	private String keyWord;
 	@Column(name="count")
-	private Long count;
+	private boolean isTrack;
+	@Column(name = "last_news")
+	private String  lastNews;
 }

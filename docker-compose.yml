@@ -1,10 +1,10 @@
 services:
-#  rabbitmq:
-#    image: rabbitmq:management
+  rabbitmq:
+    image: rabbitmq:management
 #    restart: always
-#    ports:
-#      - "5672:5672"
-#      - "15672:15672"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   postgres:
     container_name: monitoring_postgres
@@ -14,4 +14,4 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: monitoring
     ports:
-      - "5430:5432"
+      - "5429:5432"

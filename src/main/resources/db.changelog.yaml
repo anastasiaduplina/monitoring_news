@@ -23,8 +23,8 @@ databaseChangeLog:
                   type: bigint
 
   - changeSet:
-      id: '2021092507'
-      author: 'author2'
+      id: '2021092508'
+      author: 'author13'
       changes:
         - createTable:
             tableName: 'news'
@@ -35,12 +35,12 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
                     primaryKeyName: id_news
-#              - column:
-#                  name: id_network
-#                  type: bigint
+              - column:
+                  name: id_network
+                  type: bigint
               - column:
                   name: content
-                  type: varchar(255)
+                  type: jsonb
               - column:
                   name: date
                   type: timestamp
@@ -61,30 +61,11 @@ databaseChangeLog:
                   name: network
                   type: varchar(255)
   - changeSet:
-      id: '2021092519'
-      author: 'author12'
-      changes:
-        - createTable:
-            tableName: 'key_words'
-            columns:
-              - column:
-                  name: id
-                  type: bigserial
-                  constraints:
-                    primaryKey: true
-                    primaryKeyName: id_key_word
-              - column:
-                  name: key_word
-                  type: varchar(255)
-              - column:
-                  name: count
-                  type: bigint
-  - changeSet:
       id: '2021092511'
       author: 'author5'
       changes:
         - createTable:
-            tableName: 'popular_news'
+            tableName: 'new_news'
             columns:
               - column:
                   name: id
@@ -98,6 +79,7 @@ databaseChangeLog:
               - column:
                   name: id_news
                   type: bigint
+
   - changeSet:
       id: '2021092512'
       author: 'author6'
@@ -135,4 +117,64 @@ databaseChangeLog:
                     primaryKeyName: id_role
               - column:
                   name: name
+                  type: varchar(255)
+  - changeSet:
+      id: '2021092514'
+      author: 'author99'
+      changes:
+        - createTable:
+            tableName: 'requests'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_request
+              - column:
+                  name: uuid
+                  type: varchar(255)
+              - column:
+                  name: state
+                  type: varchar(255)
+  - changeSet:
+      id: '2021092517'
+      author: 'author98'
+      changes:
+        - createTable:
+            tableName: 'results'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_results
+              - column:
+                  name: idd
+                  type: varchar(255)
+              - column:
+                  name: news
+                  type: jsonb
+  - changeSet:
+      id: '2021092517'
+      author: 'author100'
+      changes:
+        - createTable:
+            tableName: 'news_from'
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: id_news_from
+              - column:
+                  name: id_user
+                  type: bigint
+              - column:
+                  name: id_key_word
+                  type: bigint
+              - column:
+                  name: last_news
                   type: varchar(255)

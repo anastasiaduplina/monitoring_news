@@ -1,11 +1,16 @@
 package org.example;
 
+import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ClientException;
 import lombok.extern.slf4j.Slf4j;
-import org.example.dto.AddRole;
-import org.example.model.Role;
-import org.example.repository.RoleRepository;
+import org.example.model.KeyWord;
+import org.example.repository.KeyWordRepository;
+import org.example.repository.UserRepository;
+import org.example.service.NetworkService;
 import org.example.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,12 +18,36 @@ import org.springframework.stereotype.Service;
 public class SomeFunctionsBeforeStart {
 	@Autowired
 	RoleService roleService;
+	@Autowired
+	private Vk vk;
+	@Autowired
+	NetworkService networkService;
+	@Autowired
+	KeyWordRepository keyWordRepository;
+	@Autowired
+	UserRepository userRepository;
+
+	@EventListener(ApplicationReadyEvent.class)
 	public void addRoles(){
 		log.info("addRoles");
-		AddRole role=new AddRole();
-		role.setName("ROLE_USER");
-		roleService.addRole(role);
-		role.setName("ROLE_ADMIN");
-		roleService.addRole(role);
+		roleService.addRole("ROLE_USER");
+		roleService.addRole("ROLE_ADMIN");
+	}
+	@EventListener(ApplicationReadyEvent.class)
+	public void addNetwork(){
+		log.info("add Networks");
+		networkService.addNetwork("VK");
+		KeyWord keyWord=new KeyWord();
+		keyWord.setKeyWord("monitoring");
+		keyWord.setTrack(true);
+		keyWordRepository.save(keyWord);
+		KeyWord keyWord2=new KeyWord();
+		keyWord2.setKeyWord("mipt.ru");
+		keyWord2.setTrack(true);
+		keyWordRepository.save(keyWord2);
+	}
+	@EventListener(ApplicationReadyEvent.class)
+	public void vkAuth() throws ClientException, ApiException {
+		vk.auth2();
 	}
 }

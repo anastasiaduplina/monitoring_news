@@ -1,13 +1,14 @@
 package org.example.model;
 
 import lombok.Data;
+import org.example.dto.NewsParse;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="popular_news")
-public class PopularNews {
+@Table(name="new_news")
+public class NewNews {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -18,4 +19,5 @@ public class PopularNews {
 	@ManyToOne
 	@JoinColumn(name = "id_news")
 	private News news;
+
 }
