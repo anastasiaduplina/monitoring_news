@@ -37,6 +37,7 @@ public class NewsFromService {
 
 	}
 	public List<String> getAllKeywords(String login){
+		log.info("GET ALL");
 		User user=userRepository.findByLogin(login);
 		List<NewsFrom> list=newsFromRepository.findByUser(user);
 		List<String> result=new ArrayList<>();

@@ -1,0 +1,31 @@
+
+.navbar {
+    margin: 8px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 225, 0.5);
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+}
+
+.btn-h:hover {
+    transform: scale(1.05);
+}
+
+.navbar-btns > *{
+    margin: 8px;
+}
