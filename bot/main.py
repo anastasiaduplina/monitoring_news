@@ -6,7 +6,7 @@ import time
 import urllib.parse
 from prs import parser
 
-TELEGRAM_TOKEN = '6204457709:AAH0pPcUIfJyjtpfKbJT6CFjxsa4qC6EwVY'
+TELEGRAM_TOKEN = ''
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
 url = 'http://localhost:8082/'
 
