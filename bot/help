@@ -1,0 +1,9 @@
+Возможные команды:
+1. /help - посмотреть команды
+2. /start - зарегистрироваться
+3. /change_password old_password new_password - поменять пароль с old_password на new_password
+4. /new_request keyword - получить новости по слову keyword
+5. /add_keyword keyword - добавить получение новостей по ключевому слову keyword
+6. /delete_keyword keyword - удалить ключевое словое keyword
+7. /get_keywords - получить все мои ключевые слова
+
